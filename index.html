@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anniversary Invite</title>
+<style>
+  body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#fffbf5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+  }
+  .screen {
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffe0e9,#fff7d1);
+    text-align:center;
+    padding:20px;
+    transition:opacity .5s ease;
+  }
+  h1 {font-size:2rem; color:#d63384; margin-bottom:20px;}
+  p  {font-size:1.2rem; color:#444;}
+  button {
+    background:#d63384;
+    color:#fff;
+    border:none;
+    padding:12px 28px;
+    margin-top:20px;
+    border-radius:30px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:background .3s;
+  }
+  button:hover {background:#b02a6e;}
+  .hidden {opacity:0; pointer-events:none;}
+  .choice-btn {
+    margin:10px;
+    width:120px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Screen 1 -->
+<div id="screen1" class="screen">
+  <h1>You should have free time on<br>October 11, 2025 😄</h1>
+  <p>I might have already decided that it’s our special day…</p>
+  <button onclick="next(1)">Next ➡️</button>
+</div>
+
+<!-- Screen 2 -->
+<div id="screen2" class="screen hidden">
+  <h1>Can I take you out on a date?</h1>
+  <p>(No pressure… but your options are limited 😜)</p>
+  <div>
+    <button class="choice-btn" onclick="goodChoice()">Yes</button>
+    <button class="choice-btn" onclick="goodChoice()">Yes</button>
+  </div>
+</div>
+
+<!-- Screen 3 -->
+<div id="screen3" class="screen hidden">
+  <h1>Good choice! 💖</h1>
+  <p>Click below to see our itinerary for the day.</p>
+  <button onclick="showItinerary()">View Itinerary 📅</button>
+</div>
+
+<script>
+  function next(n){
+    document.getElementById(`screen${n}`).classList.add('hidden');
+    document.getElementById(`screen${n+1}`).classList.remove('hidden');
+  }
+  function goodChoice(){
+    next(2);
+  }
+  function showItinerary(){
+    // replace the text below with your actual itinerary
+    const plan = `
+      <h1>Our 2nd Anniversary Plan 🎉</h1>
+      <p>
+        8:30 AM – Breakfast at our favorite café ☕<br>
+        10:00 AM – Chill walk & photos at Ayala Triangle 📸<br>
+        1:30 PM – Light lunch 🥗<br>
+        5:30 PM – Romantic rooftop dinner at Penthouse 8747 🌆<br>
+        7:30 PM – Dessert & late-night stroll 🍰
+      </p>
+    `;
+    document.getElementById('screen3').innerHTML = plan;
+  }
+</script>
+
+</body>
+</html>
